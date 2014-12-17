@@ -31,4 +31,5 @@ public abstract class Message {
 												: aDescription.length())) + " "
 						+ aValue + LINE_DIVIDER;
 	}
+
 }

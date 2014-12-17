@@ -4,6 +4,9 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.firehead.jmax.messages.recv.HelloMessage;
+import de.firehead.jmax.messages.recv.MetadataMessage;
+
 public class MessageParser {
 
 	public static Message parseMessage(byte[] someBytes)
@@ -25,6 +28,8 @@ public class MessageParser {
 		switch (messageType) {
 		case 'H':
 			return new HelloMessage(messageParts);
+		case 'M':
+			return new MetadataMessage(messageParts[2]);
 
 		default:
 			return null;

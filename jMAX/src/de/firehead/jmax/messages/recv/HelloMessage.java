@@ -1,4 +1,7 @@
-package de.firehead.jmax.messages;
+package de.firehead.jmax.messages.recv;
+
+import de.firehead.jmax.messages.Message;
+import de.firehead.jmax.messages.MessageParsingException;
 
 public class HelloMessage extends Message {
 
