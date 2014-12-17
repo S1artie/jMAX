@@ -1,13 +1,19 @@
-package de.firehead.jmax.messages;
+package de.firehead.jmax.util;
 
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.firehead.jmax.messages.Message;
+import de.firehead.jmax.messages.MessageParsingException;
 import de.firehead.jmax.messages.recv.HelloMessage;
 import de.firehead.jmax.messages.recv.MetadataMessage;
 
-public class MessageParser {
+public final class MessageUtil {
+
+	private MessageUtil() {
+		// private constructor
+	}
 
 	public static Message parseMessage(byte[] someBytes)
 			throws MessageParsingException {
@@ -36,7 +42,7 @@ public class MessageParser {
 		}
 	}
 
-	public static String[] split(String strToSplit, char delimiter) {
+	private static String[] split(String strToSplit, char delimiter) {
 		List<String> arr = new ArrayList<>();
 		int foundPosition;
 		int startIndex = 0;

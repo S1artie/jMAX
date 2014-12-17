@@ -34,7 +34,11 @@ public class DataBlock {
 	public String readString(int aLength) {
 		position += aLength;
 		return new String(data, position - aLength, aLength,
-				Charset.forName("US-ASCII"));
+				Charset.forName("UTF-8"));
+	}
+
+	public void skipBytes(int aLength) {
+		position += aLength;
 	}
 
 }

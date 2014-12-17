@@ -1,5 +1,7 @@
 package de.firehead.jmax.messages.recv;
 
+import java.util.Date;
+
 import de.firehead.jmax.messages.Message;
 import de.firehead.jmax.messages.MessageParsingException;
 
@@ -10,6 +12,12 @@ public class HelloMessage extends Message {
 	private String rfAddress;
 
 	private String firmwareVersion;
+
+	private int dutyCycle;
+
+	private int freeMemorySlots;
+
+	private Date cubeDate;
 
 	public HelloMessage(String[] someMessageParts)
 			throws MessageParsingException {

@@ -7,8 +7,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 import de.firehead.jmax.messages.Message;
-import de.firehead.jmax.messages.MessageParser;
 import de.firehead.jmax.messages.MessageParsingException;
+import de.firehead.jmax.util.MessageUtil;
 
 public class JMAXConnection {
 
@@ -87,7 +87,7 @@ public class JMAXConnection {
 								i = 0;
 
 								try {
-									Message message = MessageParser
+									Message message = MessageUtil
 											.parseMessage(singleMessage);
 									if (message != null) {
 										processMessage(message);
