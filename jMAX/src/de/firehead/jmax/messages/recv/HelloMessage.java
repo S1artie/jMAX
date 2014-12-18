@@ -1,9 +1,11 @@
 package de.firehead.jmax.messages.recv;
 
+import java.text.DateFormat;
 import java.util.Date;
 
 import de.firehead.jmax.messages.Message;
 import de.firehead.jmax.messages.MessageParsingException;
+import de.firehead.jmax.util.TimeUtil;
 
 public class HelloMessage extends Message {
 
@@ -37,6 +39,12 @@ public class HelloMessage extends Message {
 		if (firmwareVersion.startsWith("0")) {
 			firmwareVersion = firmwareVersion.substring(1);
 		}
+
+		dutyCycle = Integer.parseInt(someMessageParts[5], 16);
+		freeMemorySlots = Integer.parseInt(someMessageParts[6], 16);
+		cubeDate = TimeUtil.parseCubeDateAndTime(
+				Integer.parseInt(someMessageParts[7], 16),
+				Integer.parseInt(someMessageParts[8], 16));
 	}
 
 	public String getSerialNumber() {
@@ -60,7 +68,25 @@ public class HelloMessage extends Message {
 	public String getMessageDetails() {
 		return formatMessageDetailsLine("Serial Number", serialNumber)
 				+ formatMessageDetailsLine("RF Address", rfAddress)
-				+ formatMessageDetailsLine("Firmware Version", firmwareVersion);
+				+ formatMessageDetailsLine("Firmware Version", firmwareVersion)
+				+ formatMessageDetailsLine("Duty Cycle",
+						Integer.toString(dutyCycle))
+				+ formatMessageDetailsLine("Free Mem Slots",
+						Integer.toString(freeMemorySlots))
+				+ formatMessageDetailsLine("Cube Date", DateFormat
+						.getDateTimeInstance().format(cubeDate));
+	}
+
+	public int getDutyCycle() {
+		return dutyCycle;
+	}
+
+	public int getFreeMemorySlots() {
+		return freeMemorySlots;
+	}
+
+	public Date getCubeDate() {
+		return cubeDate;
 	}
 
 }
